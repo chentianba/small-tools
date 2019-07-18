@@ -22,10 +22,10 @@ def getcontent(content_url):
     html = r.text
     soup = BeautifulSoup(html, features="html.parser")
     al = soup.find_all("dl")[0].select("a")
-    content_url = []
+    content = []
     for t in al:
-        content_url.append("http://www.uuxs.la/book/19/19200/"+t.get("href"))
-    return content_url
+        content.append(content_url+t.get("href"))
+    return content
 
 def processshow(index, total, cur=[0]):
     if (index*100)/total > cur[0]:
@@ -34,7 +34,7 @@ def processshow(index, total, cur=[0]):
         print("============{}%===========".format(cur[0]), end='')
 
 if __name__ == "__main__":
-    content = getcontent("http://www.uuxs.la/book/19/19200/")
+    content = getcontent("http://www.uuxs.la/book/33/33194/")
     text_name = "uu.txt"
     # print(getbody(content[12]))
     try:
